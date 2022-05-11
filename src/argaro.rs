@@ -1,6 +1,6 @@
 use structopt::StructOpt;
 
-#[derive(Debug, StructOpt)]
+#[derive(StructOpt)]
 #[structopt(name = "Rimilo")]
 pub(crate) struct Argar {
     #[structopt(short = "a", long = "angla")]
