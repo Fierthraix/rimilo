@@ -2,6 +2,8 @@
 name = "rimilo"
 version = "0.1.0"
 edition = "2021"
+description = "Jam Alia Vort{ar,il}o por trci rimvortojn."
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
