@@ -11,10 +11,7 @@ license = "MIT"
 structopt = "0.3"
 regex = "1.5"
 phf = "0.10"
-serde_yaml = "0.8"
 
 [build-dependencies]
-#yaml-rust = "0.4"
-uneval = "0.2"
 phf_codegen = "0.10"
 serde_yaml = "0.8"
