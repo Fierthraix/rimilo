@@ -1,9 +1,11 @@
 [package]
 name = "rimilo"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Jam Alia Vort{ar,il}o por trci rimvortojn."
 license = "MIT"
+homepage = "https://github.com/Fierthraix/proverbilo"
+repository = "https://github.com/Fierthraix/proverbilo.git"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

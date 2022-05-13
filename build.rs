@@ -3,7 +3,7 @@ use std::fs::File;
 use std::io::{BufWriter, Write};
 use std::path::Path;
 
-use phf_codegen::Map;
+use phf_codegen::OrderedMap;
 use serde_yaml::{self, Value};
 
 fn main() {
@@ -15,7 +15,7 @@ fn main() {
     };
 
     // Enmetu enigojn en la hakettabulon el `yaml`.
-    let mut mapo = Map::new();
+    let mut mapo = OrderedMap::new();
     for enigo in &jaml_mapo {
         if let (Value::String(ŝlosilo), Value::String(valuo)) = enigo {
             mapo.entry(ŝlosilo, &format!(r#""{}""#, valuo));
