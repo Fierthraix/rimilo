@@ -7,16 +7,23 @@ use phf_codegen::OrderedMap;
 use serde_yaml::{self, Value};
 
 fn main() {
+    // Lego vortlison, kaj formatu por jaml-analizo.
+    let reĝŝlosilo = "vortoj";
+    let vortoj: String = format!("{}:\n  ", reĝŝlosilo) + &include_str!("./vortaro/vortaro.yaml").replace("\n", "\n  ");
+
     // Legu `yaml`-dosieron el disko kiel `Yaml`-strukto.
-    let jaml_vortoj: Value = serde_yaml::from_str(include_str!("./vortaro/vortaro.yaml")).unwrap();
+    let jaml_vortoj: Value = serde_yaml::from_str(&vortoj).unwrap();
     let jaml_mapo = match jaml_vortoj {
-        Value::Mapping(mapo) => mapo,
+        Value::Mapping(mut mapo) => match mapo.remove(reĝŝlosilo) {
+            Some(Value::Mapping(mapo)) => mapo,
+            _ => panic!(),
+        },
         _ => panic!(),
     };
 
     // Enmetu enigojn en la hakettabulon el `yaml`.
     let mut mapo = OrderedMap::new();
-    for enigo in &jaml_mapo {
+    for enigo in jaml_mapo {
         if let (Value::String(ŝlosilo), Value::String(valuo)) = enigo {
             mapo.entry(ŝlosilo, &format!(r#""{}""#, valuo));
         }
