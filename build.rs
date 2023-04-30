@@ -9,7 +9,7 @@ use serde_yaml::{self, Value};
 fn main() {
     // Lego vortlison, kaj formatu por jaml-analizo.
     let reĝŝlosilo = "vortoj";
-    let vortoj: String = format!("{}:\n  ", reĝŝlosilo) + &include_str!("./vortaro/vortaro.yaml").replace("\n", "\n  ");
+    let vortoj: String = format!("{}:\n  ", reĝŝlosilo) + &include_str!("./vortaro/vortaro.yaml").replace('\n', "\n  ");
 
     // Legu `yaml`-dosieron el disko kiel `Yaml`-strukto.
     let jaml_vortoj: Value = serde_yaml::from_str(&vortoj).unwrap();
@@ -31,6 +31,6 @@ fn main() {
 
     // Konservu hakettabulon al disko por aliaj funkcioj.
     let ĝenita_dosiervojo = Path::new(&env::var("OUT_DIR").unwrap()).join("vortoj.rs");
-    let mut dosiero = BufWriter::new(File::create(&ĝenita_dosiervojo).unwrap());
+    let mut dosiero = BufWriter::new(File::create(ĝenita_dosiervojo).unwrap());
     writeln!(&mut dosiero, "{}", mapo.build()).unwrap();
 }
