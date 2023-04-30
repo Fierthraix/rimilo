@@ -12,6 +12,9 @@ pub(crate) struct Argar {
     #[structopt(short = "w", long = "vorta")]
     pub(crate) vorta: bool,
 
+    #[structopt(short = "k", long = "komenca")]
+    pub(crate) komenca: bool,
+
     #[structopt(short = "f", long = "fina")]
     pub(crate) fina: bool,
 

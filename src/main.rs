@@ -10,12 +10,14 @@ fn main() {
     let argar = argaro::Argar::from_args();
 
     let regekso = {
-        let (komenc, fin) = match (argar.plena, argar.fina, argar.vorta) {
-                (true, _, _) => (r"^", r".$"),
-                (false, true, _) => (r"", r".$"),
-                (false, false, true) => (r"\b", r"\b"),
-                _ => ("", ""),
+        let komenc = if argar.plena || argar.komenca {
+            r"^"
+        } else if argar.vorta {
+            r"\b"
+        } else {
+            r""
         };
+        let fin = if argar.plena || argar.fina { r".$" } else if argar.vorta { r"\b" } else { r"" };
         Regex::new(&format!(r"{}(?P<unua>{}){}", komenc, argar.regekso, fin)).unwrap()
     };
 
