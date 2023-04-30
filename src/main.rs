@@ -9,12 +9,14 @@ static VORTAR: phf::OrderedMap<&'static str, &'static str> =
 fn main() {
     let argar = argaro::Argar::from_args();
 
-    let regekso = if argar.fina {
-        Regex::new(&format!(r"(?P<unua>{}).$", argar.regekso)).unwrap()
-    } else if argar.plena {
-        Regex::new(&format!(r"^(?P<unua>{}).$", argar.regekso)).unwrap()
-    } else {
-        Regex::new(&format!(r"(?P<unua>{})", argar.regekso)).unwrap()
+    let regekso = {
+        let (komenc, fin) = match (argar.plena, argar.fina, argar.vorta) {
+                (true, _, _) => (r"^", r".$"),
+                (false, true, _) => (r"", r".$"),
+                (false, false, true) => (r"\b", r"\b"),
+                _ => ("", ""),
+        };
+        Regex::new(&format!(r"{}(?P<unua>{}){}", komenc, argar.regekso, fin)).unwrap()
     };
 
     if argar.angla {
