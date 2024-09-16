@@ -1,6 +1,6 @@
 [package]
 name = "rimilo"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 description = "Jam Alia Vort{ar,il}o por trci rimvortojn."
 license = "MIT"
@@ -11,7 +11,7 @@ repository = "https://github.com/Fierthraix/proverbilo.git"
 
 [dependencies]
 structopt = "0.3"
-regex = "1.8"
+regex = "1.10"
 phf = "0.11"
 
 [build-dependencies]
