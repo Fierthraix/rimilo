@@ -31,7 +31,7 @@ fn main() {
     // Enmetu enigojn en la hakettabulon el ĉiuj fontoj.
     let mut mapo = OrderedMap::new();
     for (ŝlosilo, valuo) in vortoparoj {
-        mapo.entry(ŝlosilo, &format!(r#""{}""#, valuo));
+        mapo.entry(ŝlosilo, format!(r#""{}""#, valuo));
     }
 
     // Konservu hakettabulon al disko por aliaj funkcioj.
@@ -86,7 +86,10 @@ fn enmeti_el_jaml(dosiervojo: &Path, vortoparoj: &mut std::collections::BTreeMap
     }
 }
 
-fn enmeti_el_ĵsono(dosiervojo: &Path, vortoparoj: &mut std::collections::BTreeMap<String, String>) {
+fn enmeti_el_ĵsono(
+    dosiervojo: &Path,
+    vortoparoj: &mut std::collections::BTreeMap<String, String>,
+) {
     let enhavo = fs::read_to_string(dosiervojo).unwrap();
     let enhavo = forigi_bom(enhavo);
     let valoro: Value = serde_yaml::from_str(&enhavo).unwrap();
