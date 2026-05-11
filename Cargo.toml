@@ -1,9 +1,10 @@
 [package]
 name = "rimilo"
-version = "0.2.6"
+version = "0.2.7"
 edition = "2024"
 description = "Jam Alia Vort{ar,il}o por trci rimvortojn."
 license = "MIT"
+readme = "README.md"
 homepage = "https://github.com/Fierthraix/rimilo"
 repository = "https://github.com/Fierthraix/rimilo"
 
