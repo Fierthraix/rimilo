@@ -17,7 +17,13 @@ fn main() {
         } else {
             r""
         };
-        let fin = if argar.plena || argar.fina { r".$" } else if argar.vorta { r"\b" } else { r"" };
+        let fin = if argar.plena || argar.fina {
+            r".$"
+        } else if argar.vorta {
+            r"\b"
+        } else {
+            r""
+        };
         Regex::new(&format!(r"{}(?P<unua>{}){}", komenc, argar.regekso, fin)).unwrap()
     };
 
@@ -31,7 +37,6 @@ fn main() {
                 );
             }
         }
-
     } else {
         for (ŝlosilo, valuo) in &VORTAR {
             if regekso.is_match(ŝlosilo) {
