@@ -1,0 +1,17 @@
+pkgbase = rimilo
+	pkgdesc = Rapida rimvort-serĉilo por Esperanto-angla vortaro
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/Fierthraix/rimilo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	conflicts = rimilo-bin
+	conflicts = rimilo-git
+	source = rimilo-0.2.7.crate::https://static.crates.io/crates/rimilo/rimilo-0.2.7.crate
+	sha256sums = 52f2f932c97873e923658bb14e025908b7fdf4ab1723c71f49d6b193db4b9a24
+
+pkgname = rimilo

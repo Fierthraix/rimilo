@@ -1,0 +1,19 @@
+pkgbase = rimilo-bin
+	pkgdesc = Rapida rimvort-serĉilo por Esperanto-angla vortaro
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/Fierthraix/rimilo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = rimilo
+	conflicts = rimilo
+	conflicts = rimilo-git
+	source_x86_64 = https://github.com/Fierthraix/rimilo/releases/download/v0.2.7/rimilo-0.2.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/Fierthraix/rimilo/releases/download/v0.2.7/rimilo-0.2.7-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = rimilo-bin
