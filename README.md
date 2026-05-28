@@ -14,21 +14,41 @@ Jam Alia Vort{ar,il}o por trci rimvortojn.
 
 ## Installation
 
+### Cargo
+
 ```bash
 cargo install rimilo
+```
+
+### Arch Linux / AUR
+
+```bash
 yay -S rimilo
 yay -S rimilo-bin
 yay -S rimilo-git
-brew tap Fierthraix/tap
-brew install --cask rimilo
-nix run github:Fierthraix/nur-packages#rimilo
 ```
+
+### macOS / Homebrew
+
+```zsh
+brew install --cask Fierthraix/tap/rimilo
+```
+
+### Windows / Scoop
 
 ```powershell
 scoop bucket add fierthraix https://github.com/Fierthraix/scoop-bucket
 scoop install rimilo
 ```
 
+### Nix
+
+```bash
+nix profile install github:Fierthraix/nur-packages#rimilo
+```
+
+### Release Assets
+
 ```text
-deb/rpm/apk/tar/zip: https://github.com/Fierthraix/rimilo/releases
+https://github.com/Fierthraix/rimilo/releases/latest
 ```
