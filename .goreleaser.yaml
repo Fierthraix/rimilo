@@ -1,0 +1,95 @@
+version: 2
+
+project_name: rimilo
+
+builds:
+  - id: rimilo
+    builder: rust
+    binary: rimilo
+    targets:
+      - x86_64-unknown-linux-gnu
+      - aarch64-unknown-linux-gnu
+      - x86_64-apple-darwin
+      - aarch64-apple-darwin
+      - x86_64-pc-windows-gnu
+    flags:
+      - --release
+      - --locked
+      - --all-features
+
+archives:
+  - id: archives
+    ids:
+      - rimilo
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Target }}"
+    wrap_in_directory: "{{ .ProjectName }}-{{ .Version }}-{{ .Target }}"
+    formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    files:
+      - README*
+      - LICENSE*
+      - CHANGELOG*
+      - NOTICE*
+
+checksum:
+  name_template: checksums.txt
+
+homebrew_casks:
+  - name: rimilo
+    ids:
+      - archives
+    repository:
+      owner: Fierthraix
+      name: homebrew-tap
+      token: "{{ .Env.RELEASE_PUBLISH_TOKEN }}"
+    directory: Casks
+    homepage: https://github.com/Fierthraix/rimilo
+    description: Rapida rimvort-serchilo por Esperanto-angla vortaro.
+    license: MIT
+    binaries:
+      - rimilo
+scoops:
+  - name: rimilo
+    ids:
+      - archives
+    repository:
+      owner: Fierthraix
+      name: scoop-bucket
+      token: "{{ .Env.RELEASE_PUBLISH_TOKEN }}"
+    directory: bucket
+    homepage: https://github.com/Fierthraix/rimilo
+    description: Rapida rimvort-serchilo por Esperanto-angla vortaro.
+    license: MIT
+
+nix:
+  - name: rimilo
+    ids:
+      - archives
+    repository:
+      owner: Fierthraix
+      name: nur-packages
+      token: "{{ .Env.RELEASE_PUBLISH_TOKEN }}"
+    path: pkgs/rimilo/default.nix
+    homepage: https://github.com/Fierthraix/rimilo
+    description: Rapida rimvort-serchilo por Esperanto-angla vortaro.
+    license: mit
+
+nfpms:
+  - id: packages
+    ids:
+      - rimilo
+    package_name: rimilo
+    vendor: Fierthraix
+    homepage: https://github.com/Fierthraix/rimilo
+    maintainer: Fierthraix
+    description: Rapida rimvort-serchilo por Esperanto-angla vortaro.
+    license: MIT
+    bindir: /usr/bin
+    formats:
+      - deb
+      - rpm
+      - apk
